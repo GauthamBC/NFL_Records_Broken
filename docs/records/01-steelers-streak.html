@@ -6,33 +6,42 @@
   <link rel="stylesheet" href="../css/record-card.css" />
 </head>
 <body>
-  <div class="anr">
-    <div class="anr-env">
-      <div class="anr-env-head">
-        <div>
-          <div class="pill">#1 • Team • League Streak</div>
-          <h3>Consecutive non-losing seasons</h3>
-          <p class="subline">Pittsburgh Steelers</p>
-        </div>
+  <!-- NEW: fixed-height iframe viewport -->
+  <div class="anr-frame">
+    <!-- NEW: the internal branded scroller -->
+    <div class="anr-scroll">
 
-        <div class="anr-years" aria-label="Years stood">
-          <div class="label">Years<br>stood</div>
-          <div class="num">40</div>
+      <!-- your existing module (unchanged) -->
+      <div class="anr">
+        <div class="anr-env">
+          <div class="anr-env-head">
+            <div>
+              <div class="pill">#1 • Team • League Streak</div>
+              <h3>Consecutive non-losing seasons</h3>
+              <p class="subline">Pittsburgh Steelers</p>
+            </div>
+
+            <div class="anr-years" aria-label="Years stood">
+              <div class="label">Years<br>stood</div>
+              <div class="num">40</div>
+            </div>
+          </div>
+
+          <div class="anr-bar-wrap" aria-label="Longevity meter">
+            <div class="bar-row">
+              <small class="bar-label">Longevity (Years Stood)</small>
+            </div>
+            <div class="anr-bar"><span style="width:100%;"></span></div>
+          </div>
+
+          <div class="anr-env-metrics">
+            <div class="anr-env-box"><div class="k">New (2025)</div><div class="v">22 seasons</div></div>
+            <div class="anr-env-box"><div class="k">Previous</div><div class="v">21 — Cowboys</div></div>
+            <div class="anr-env-box"><div class="k">Year set</div><div class="v">1965–1985</div></div>
+          </div>
         </div>
       </div>
 
-      <div class="anr-bar-wrap" aria-label="Longevity meter">
-        <div class="bar-row">
-          <small class="bar-label">Longevity (Years Stood)</small>
-        </div>
-        <div class="anr-bar"><span style="width:100%;"></span></div>
-      </div>
-
-      <div class="anr-env-metrics">
-        <div class="anr-env-box"><div class="k">New (2025)</div><div class="v">22 seasons</div></div>
-        <div class="anr-env-box"><div class="k">Previous</div><div class="v">21 — Cowboys</div></div>
-        <div class="anr-env-box"><div class="k">Year set</div><div class="v">1965–1985</div></div>
-      </div>
     </div>
   </div>
 </body>
