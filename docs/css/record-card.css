@@ -1,14 +1,196 @@
-/docs
-  /css
-    record-card.css
-  /records
-    01-steelers-streak.html
-    02-dike-allpurpose.html
-    03-jefferson-6seasons.html
-    04-allen-300td.html
-    05-fg-40-49-rate.html
-    06-mcbride-receptions.html
-    07-garrett-sacks.html
-    08-camlittle-68.html
-    09-camlittle-67-outdoor.html
-    10-league-60plus.html
+:root{
+  --an-ink:#111;
+  --an-sub:#4b5563;
+  --an-line:rgba(0,0,0,.08);
+  --an-card:#fff;
+  --an-accent:#00B073;
+  --an-accent-soft:rgba(0,176,115,.12);
+}
+
+body{
+  margin:0;
+  background:transparent;
+  color:var(--an-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.anr{
+  max-width: 920px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.anr-env{
+  background: var(--an-card);
+  border: 1px solid var(--an-line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.anr-env::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--an-accent), rgba(0,176,115,.15));
+}
+
+.anr-env-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.anr-env h3{
+  margin:0;
+  font-size: 15px;
+  font-weight: 1000;
+  letter-spacing: -.2px;
+}
+
+.subline{
+  margin: 6px 0 0;
+  font-weight: 900;
+  color: var(--an-sub);
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  background: rgba(0,0,0,.05);
+  color: #111;
+  margin-bottom: 6px;
+}
+
+/* Years stood badge */
+.anr-years{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--an-accent-soft), rgba(255,255,255,.85));
+  border: 1px solid rgba(0,176,115,.22);
+  box-shadow: 0 10px 18px rgba(0,0,0,.06);
+}
+
+.anr-years .label{
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: #065f46;
+  line-height: 1.1;
+}
+
+.anr-years .num{
+  font-size: 22px;
+  font-weight: 1100;
+  letter-spacing: -.4px;
+  color: var(--an-ink);
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid rgba(0,0,0,.06);
+  min-width: 44px;
+  text-align:center;
+  position: relative;
+}
+
+.anr-years .num::after{
+  content:"";
+  display:block;
+  width: 26px;
+  height: 3px;
+  background: var(--an-accent);
+  border-radius: 2px;
+  margin: 6px auto 0;
+  opacity: .95;
+}
+
+/* Longevity bar */
+.anr-bar-wrap{ margin-top: 12px; }
+
+.bar-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom: 6px;
+  gap: 10px;
+}
+
+.bar-label{
+  font-size: 11px;
+  font-weight: 950;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+.bar-right{
+  font-size: 11px;
+  font-weight: 950;
+  color: var(--an-ink);
+  opacity: .65;
+}
+
+.anr-bar{
+  background: rgba(0,0,0,.06);
+  border-radius: 999px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.anr-bar > span{
+  display:block;
+  height:100%;
+  background: linear-gradient(90deg, var(--an-accent), rgba(0,176,115,.25));
+  border-radius: 999px;
+}
+
+/* Metric boxes */
+.anr-env-metrics{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.anr-env-box{
+  border: 1px solid var(--an-line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,.02);
+  text-align: center;
+}
+
+.anr-env-box .k{
+  font-size: 11px;
+  font-weight: 950;
+  color: var(--an-sub);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+.anr-env-box .v{
+  font-size: 18px;
+  font-weight: 1100;
+  margin-top: 6px;
+}
+
+@media (max-width: 768px){
+  .anr-env-metrics{ grid-template-columns: 1fr; }
+  .anr-years{ width: 100%; justify-content: space-between; }
+}
