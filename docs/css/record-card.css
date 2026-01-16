@@ -1,7 +1,6 @@
 /* =========================================
    ACTION NETWORK — RECORD ENV MODULE (Static)
-   Shared stylesheet for all record iframes
-   ✅ Includes internal iframe scrolling support
+   ✅ Internal branded scroll (no iframe scrolling)
    ========================================= */
 
 :root{
@@ -13,30 +12,44 @@
   --an-accent-soft:rgba(0,176,115,.12);
 }
 
-/* Make the document inside the iframe scrollable */
-html, body{
-  height: 100%;
-}
+/* IMPORTANT: prevent the iframe/page itself from scrolling */
+html, body{ height: 100%; }
 
 body{
   margin:0;
   background:transparent;
   color:var(--an-ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-
-  /* ✅ key: allow internal scrolling within fixed-height iframes */
-  overflow-y:auto;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden; /* ✅ key */
 }
 
-/* Optional: nicer scrollbar (mostly desktop) */
-body::-webkit-scrollbar{ width: 6px; }
-body::-webkit-scrollbar-thumb{
-  background: rgba(0,176,115,.35);
+/* The fixed-height viewport inside the iframe */
+.anr-frame{
+  height: 215px;           /* ✅ match your iframe height */
+  overflow: hidden;
+}
+
+/* The branded scroll area (this is what scrolls) */
+.anr-scroll{
+  height: 215px;           /* ✅ match your iframe height */
+  overflow-y: auto;        /* ✅ internal scrolling */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;              /* keep tight; you can add 6px if you want */
+}
+
+/* Branded scrollbar for the internal scroller */
+.anr-scroll{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,176,115,.45) rgba(0,0,0,.06);
+}
+
+.anr-scroll::-webkit-scrollbar{ width: 6px; }
+.anr-scroll::-webkit-scrollbar-thumb{
+  background: rgba(0,176,115,.45);
   border-radius: 999px;
 }
-body::-webkit-scrollbar-track{
+.anr-scroll::-webkit-scrollbar-track{
   background: rgba(0,0,0,.06);
   border-radius: 999px;
 }
