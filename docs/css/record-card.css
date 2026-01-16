@@ -1,3 +1,9 @@
+/* =========================================
+   ACTION NETWORK — RECORD ENV MODULE (Static)
+   Shared stylesheet for all record iframes
+   ✅ Includes internal iframe scrolling support
+   ========================================= */
+
 :root{
   --an-ink:#111;
   --an-sub:#4b5563;
@@ -7,11 +13,32 @@
   --an-accent-soft:rgba(0,176,115,.12);
 }
 
+/* Make the document inside the iframe scrollable */
+html, body{
+  height: 100%;
+}
+
 body{
   margin:0;
   background:transparent;
   color:var(--an-ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+  /* ✅ key: allow internal scrolling within fixed-height iframes */
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optional: nicer scrollbar (mostly desktop) */
+body::-webkit-scrollbar{ width: 6px; }
+body::-webkit-scrollbar-thumb{
+  background: rgba(0,176,115,.35);
+  border-radius: 999px;
+}
+body::-webkit-scrollbar-track{
+  background: rgba(0,0,0,.06);
+  border-radius: 999px;
 }
 
 .anr{
