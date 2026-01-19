@@ -1,6 +1,7 @@
 /* =========================================
    ACTION NETWORK — RECORD ENV MODULE (Static)
-   ✅ Fit-to-200px (no scrolling) + tighter typography
+   ✅ 200px iframe target
+   ✅ Branded internal scroll (only if needed)
    ========================================= */
 
 :root{
@@ -12,7 +13,7 @@
   --an-accent-soft:rgba(0,176,115,.12);
 }
 
-/* IMPORTANT: prevent the iframe/page itself from scrolling */
+/* Prevent the iframe/page itself from scrolling */
 html, body{ height: 100%; }
 
 body{
@@ -20,28 +21,30 @@ body{
   background:transparent;
   color:var(--an-ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  overflow: hidden; /* ✅ no iframe/page scroll */
+  overflow: hidden; /* ✅ key: no iframe scroll */
 }
 
-/* The fixed-height viewport inside the iframe (set iframe height to 200) */
+/* Fixed-height viewport inside the iframe (set iframe height to 200) */
 .anr-frame{
   height: 200px;
   overflow: hidden;
 }
 
-/* No internal scroll — we want content to fit */
+/* Internal scroller: only scrolls if content overflows */
 .anr-scroll{
   height: 200px;
-  overflow: hidden;
+  overflow-y: auto;        /* ✅ scroll only when needed */
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   padding: 0;
 }
 
-/* (Scrollbar styles kept for safety, but won't appear since overflow is hidden) */
+/* Branded scrollbar for the internal scroller */
 .anr-scroll{
   scrollbar-width: thin;
   scrollbar-color: rgba(0,176,115,.45) rgba(0,0,0,.06);
 }
+
 .anr-scroll::-webkit-scrollbar{ width: 6px; }
 .anr-scroll::-webkit-scrollbar-thumb{
   background: rgba(0,176,115,.45);
@@ -59,6 +62,7 @@ body{
   box-sizing: border-box;
 }
 
+/* Card (tightened to fit 200px better) */
 .anr-env{
   background: var(--an-card);
   border: 1px solid var(--an-line);
@@ -81,22 +85,22 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap: 10px;                         /* tightened */
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .anr-env h3{
   margin:0;
-  font-size: 14px;                   /* tightened */
-  font-weight: 950;                  /* slightly less heavy than 1000 */
+  font-size: 14px;
+  font-weight: 950;
   letter-spacing: -.15px;
-  line-height: 1.15;                 /* helps fit */
+  line-height: 1.15;
 }
 
 .subline{
-  margin: 4px 0 0;                   /* tightened */
-  font-weight: 850;                  /* tightened */
-  font-size: 12px;                   /* tightened */
+  margin: 4px 0 0;
+  font-weight: 850;
+  font-size: 12px;
   color: var(--an-sub);
   line-height: 1.15;
 }
@@ -104,32 +108,33 @@ body{
 .pill{
   display:inline-flex;
   align-items:center;
-  padding: 2px 8px;                  /* tightened */
+  padding: 2px 8px;
   border-radius: 999px;
-  font-size: 10px;                   /* tightened */
-  font-weight: 900;                  /* tightened */
+  font-size: 10px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .55px;
   background: rgba(0,0,0,.05);
   color: #111;
-  margin-bottom: 4px;                /* tightened */
+  margin-bottom: 4px;
 }
 
 /* Years stood badge (smaller) */
 .anr-years{
   display:flex;
   align-items:center;
-  gap: 8px;                          /* tightened */
-  padding: 8px 10px;                 /* tightened */
-  border-radius: 12px;               /* tightened */
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
   background: linear-gradient(180deg, var(--an-accent-soft), rgba(255,255,255,.85));
   border: 1px solid rgba(0,176,115,.22);
   box-shadow: 0 10px 18px rgba(0,0,0,.06);
+  flex: 0 0 auto;
 }
 
 .anr-years .label{
-  font-size: 10px;                   /* tightened */
-  font-weight: 900;                  /* tightened */
+  font-size: 10px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .65px;
   color: #065f46;
@@ -137,15 +142,15 @@ body{
 }
 
 .anr-years .num{
-  font-size: 18px;                   /* tightened */
-  font-weight: 1000;                 /* tightened */
+  font-size: 18px;
+  font-weight: 1000;
   letter-spacing: -.3px;
   color: var(--an-ink);
-  padding: 5px 8px;                  /* tightened */
+  padding: 5px 8px;
   border-radius: 12px;
   background: rgba(255,255,255,.8);
   border: 1px solid rgba(0,0,0,.06);
-  min-width: 38px;                   /* tightened */
+  min-width: 38px;
   text-align:center;
   position: relative;
 }
@@ -153,36 +158,36 @@ body{
 .anr-years .num::after{
   content:"";
   display:block;
-  width: 22px;                       /* tightened */
+  width: 22px;
   height: 3px;
   background: var(--an-accent);
   border-radius: 2px;
-  margin: 5px auto 0;                /* tightened */
+  margin: 5px auto 0;
   opacity: .95;
 }
 
 /* Longevity bar (tighter) */
-.anr-bar-wrap{ margin-top: 8px; }    /* tightened */
+.anr-bar-wrap{ margin-top: 8px; }
 
 .bar-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom: 5px;                /* tightened */
+  margin-bottom: 5px;
   gap: 10px;
 }
 
 .bar-label{
-  font-size: 10px;                   /* tightened */
-  font-weight: 900;                  /* tightened */
+  font-size: 10px;
+  font-weight: 900;
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: .55px;
 }
 
 .bar-right{
-  font-size: 10px;                   /* tightened */
-  font-weight: 900;                  /* tightened */
+  font-size: 10px;
+  font-weight: 900;
   color: var(--an-ink);
   opacity: .65;
 }
@@ -190,7 +195,7 @@ body{
 .anr-bar{
   background: rgba(0,0,0,.06);
   border-radius: 999px;
-  height: 10px;                      /* tightened */
+  height: 10px;
   overflow: hidden;
 }
 
@@ -205,30 +210,30 @@ body{
 .anr-env-metrics{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;                          /* tightened */
-  margin-top: 10px;                  /* tightened */
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .anr-env-box{
   border: 1px solid var(--an-line);
-  border-radius: 10px;               /* tightened */
-  padding: 8px 8px;                  /* tightened */
+  border-radius: 10px;
+  padding: 8px 8px;
   background: rgba(0,0,0,.02);
   text-align: center;
 }
 
 .anr-env-box .k{
-  font-size: 10px;                   /* tightened */
-  font-weight: 900;                  /* tightened */
+  font-size: 10px;
+  font-weight: 900;
   color: var(--an-sub);
   text-transform: uppercase;
   letter-spacing: .55px;
 }
 
 .anr-env-box .v{
-  font-size: 15px;                   /* tightened */
-  font-weight: 950;                  /* tightened */
-  margin-top: 4px;                   /* tightened */
+  font-size: 15px;
+  font-weight: 950;
+  margin-top: 4px;
   line-height: 1.1;
 }
 
