@@ -1,7 +1,8 @@
 /* =========================================
    ACTION NETWORK — RECORD ENV MODULE (Static)
-   ✅ 200px iframe target
-   ✅ Branded internal scroll (only if needed)
+   ✅ 150px iframe target
+   ✅ Branded internal scroll (mobile-safe, only if needed)
+   ✅ Better touch scrolling + no “cut off” bottom on mobile
    ========================================= */
 
 :root{
@@ -24,19 +25,23 @@ body{
   overflow: hidden; /* ✅ key: no iframe scroll */
 }
 
-/* Fixed-height viewport inside the iframe (set iframe height to 200) */
+/* Fixed-height viewport inside the iframe (set iframe height to 150) */
 .anr-frame{
-  height: 200px;
+  height: 150px;
   overflow: hidden;
 }
 
-/* Internal scroller: only scrolls if content overflows */
+/* Internal scroller: scrolls only if content overflows (mobile-safe) */
 .anr-scroll{
-  height: 200px;
-  overflow-y: auto;        /* ✅ scroll only when needed */
+  height: 150px;
+  overflow-y: auto;                 /* ✅ internal scroll only when needed */
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding: 0;
+  -webkit-overflow-scrolling: touch;/* ✅ iOS momentum scroll */
+  overscroll-behavior: contain;     /* ✅ stop parent page stealing scroll */
+  touch-action: pan-y;              /* ✅ allow vertical gestures */
+  padding: 0 0 8px;                 /* ✅ tiny bottom padding prevents “cut off” */
+  position: relative;
+  transform: translateZ(0);         /* ✅ helps some mobile browsers */
 }
 
 /* Branded scrollbar for the internal scroller */
@@ -62,12 +67,12 @@ body{
   box-sizing: border-box;
 }
 
-/* Card (tightened to fit 200px better) */
+/* Card (tightened to fit 150px better) */
 .anr-env{
   background: var(--an-card);
   border: 1px solid var(--an-line);
   border-radius: 14px;
-  padding: 10px 12px;              /* tightened */
+  padding: 10px 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,.05);
   position: relative;
   overflow: hidden;
