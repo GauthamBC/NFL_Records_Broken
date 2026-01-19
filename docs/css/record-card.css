@@ -230,7 +230,7 @@ body{
   margin-top: 6px;
 }
 
-@media (max-width: 520px){
+@media (max-width: 420px){
   .anr-env-metrics{ grid-template-columns: 1fr; }
   .anr-years{ width: 100%; justify-content: space-between; }
 }
