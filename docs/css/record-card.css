@@ -1,6 +1,6 @@
 /* =========================================
    ACTION NETWORK — RECORD ENV MODULE (Static)
-   ✅ Internal branded scroll (no iframe scrolling)
+   ✅ Fit-to-200px (no scrolling) + tighter typography
    ========================================= */
 
 :root{
@@ -20,30 +20,28 @@ body{
   background:transparent;
   color:var(--an-ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  overflow: hidden; /* ✅ key */
+  overflow: hidden; /* ✅ no iframe/page scroll */
 }
 
-/* The fixed-height viewport inside the iframe */
+/* The fixed-height viewport inside the iframe (set iframe height to 200) */
 .anr-frame{
-  height: 215px;           /* ✅ match your iframe height */
+  height: 200px;
   overflow: hidden;
 }
 
-/* The branded scroll area (this is what scrolls) */
+/* No internal scroll — we want content to fit */
 .anr-scroll{
-  height: 215px;           /* ✅ match your iframe height */
-  overflow-y: auto;        /* ✅ internal scrolling */
+  height: 200px;
+  overflow: hidden;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding: 0;              /* keep tight; you can add 6px if you want */
+  padding: 0;
 }
 
-/* Branded scrollbar for the internal scroller */
+/* (Scrollbar styles kept for safety, but won't appear since overflow is hidden) */
 .anr-scroll{
   scrollbar-width: thin;
   scrollbar-color: rgba(0,176,115,.45) rgba(0,0,0,.06);
 }
-
 .anr-scroll::-webkit-scrollbar{ width: 6px; }
 .anr-scroll::-webkit-scrollbar-thumb{
   background: rgba(0,176,115,.45);
@@ -65,7 +63,7 @@ body{
   background: var(--an-card);
   border: 1px solid var(--an-line);
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 10px 12px;              /* tightened */
   box-shadow: 0 8px 20px rgba(0,0,0,.05);
   position: relative;
   overflow: hidden;
@@ -83,68 +81,71 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap: 12px;
+  gap: 10px;                         /* tightened */
   flex-wrap: wrap;
 }
 
 .anr-env h3{
   margin:0;
-  font-size: 15px;
-  font-weight: 1000;
-  letter-spacing: -.2px;
+  font-size: 14px;                   /* tightened */
+  font-weight: 950;                  /* slightly less heavy than 1000 */
+  letter-spacing: -.15px;
+  line-height: 1.15;                 /* helps fit */
 }
 
 .subline{
-  margin: 6px 0 0;
-  font-weight: 900;
+  margin: 4px 0 0;                   /* tightened */
+  font-weight: 850;                  /* tightened */
+  font-size: 12px;                   /* tightened */
   color: var(--an-sub);
+  line-height: 1.15;
 }
 
 .pill{
   display:inline-flex;
   align-items:center;
-  padding: 3px 10px;
+  padding: 2px 8px;                  /* tightened */
   border-radius: 999px;
-  font-size: 11px;
-  font-weight: 950;
+  font-size: 10px;                   /* tightened */
+  font-weight: 900;                  /* tightened */
   text-transform: uppercase;
-  letter-spacing: .6px;
+  letter-spacing: .55px;
   background: rgba(0,0,0,.05);
   color: #111;
-  margin-bottom: 6px;
+  margin-bottom: 4px;                /* tightened */
 }
 
-/* Years stood badge */
+/* Years stood badge (smaller) */
 .anr-years{
   display:flex;
   align-items:center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 14px;
+  gap: 8px;                          /* tightened */
+  padding: 8px 10px;                 /* tightened */
+  border-radius: 12px;               /* tightened */
   background: linear-gradient(180deg, var(--an-accent-soft), rgba(255,255,255,.85));
   border: 1px solid rgba(0,176,115,.22);
   box-shadow: 0 10px 18px rgba(0,0,0,.06);
 }
 
 .anr-years .label{
-  font-size: 11px;
-  font-weight: 950;
+  font-size: 10px;                   /* tightened */
+  font-weight: 900;                  /* tightened */
   text-transform: uppercase;
-  letter-spacing: .7px;
+  letter-spacing: .65px;
   color: #065f46;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .anr-years .num{
-  font-size: 22px;
-  font-weight: 1100;
-  letter-spacing: -.4px;
+  font-size: 18px;                   /* tightened */
+  font-weight: 1000;                 /* tightened */
+  letter-spacing: -.3px;
   color: var(--an-ink);
-  padding: 6px 10px;
+  padding: 5px 8px;                  /* tightened */
   border-radius: 12px;
   background: rgba(255,255,255,.8);
   border: 1px solid rgba(0,0,0,.06);
-  min-width: 44px;
+  min-width: 38px;                   /* tightened */
   text-align:center;
   position: relative;
 }
@@ -152,36 +153,36 @@ body{
 .anr-years .num::after{
   content:"";
   display:block;
-  width: 26px;
+  width: 22px;                       /* tightened */
   height: 3px;
   background: var(--an-accent);
   border-radius: 2px;
-  margin: 6px auto 0;
+  margin: 5px auto 0;                /* tightened */
   opacity: .95;
 }
 
-/* Longevity bar */
-.anr-bar-wrap{ margin-top: 12px; }
+/* Longevity bar (tighter) */
+.anr-bar-wrap{ margin-top: 8px; }    /* tightened */
 
 .bar-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom: 6px;
+  margin-bottom: 5px;                /* tightened */
   gap: 10px;
 }
 
 .bar-label{
-  font-size: 11px;
-  font-weight: 950;
+  font-size: 10px;                   /* tightened */
+  font-weight: 900;                  /* tightened */
   color: #6b7280;
   text-transform: uppercase;
-  letter-spacing: .6px;
+  letter-spacing: .55px;
 }
 
 .bar-right{
-  font-size: 11px;
-  font-weight: 950;
+  font-size: 10px;                   /* tightened */
+  font-weight: 900;                  /* tightened */
   color: var(--an-ink);
   opacity: .65;
 }
@@ -189,7 +190,7 @@ body{
 .anr-bar{
   background: rgba(0,0,0,.06);
   border-radius: 999px;
-  height: 12px;
+  height: 10px;                      /* tightened */
   overflow: hidden;
 }
 
@@ -200,36 +201,38 @@ body{
   border-radius: 999px;
 }
 
-/* Metric boxes */
+/* Metric boxes (smaller) */
 .anr-env-metrics{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 12px;
+  gap: 8px;                          /* tightened */
+  margin-top: 10px;                  /* tightened */
 }
 
 .anr-env-box{
   border: 1px solid var(--an-line);
-  border-radius: 12px;
-  padding: 10px 12px;
+  border-radius: 10px;               /* tightened */
+  padding: 8px 8px;                  /* tightened */
   background: rgba(0,0,0,.02);
   text-align: center;
 }
 
 .anr-env-box .k{
-  font-size: 11px;
-  font-weight: 950;
+  font-size: 10px;                   /* tightened */
+  font-weight: 900;                  /* tightened */
   color: var(--an-sub);
   text-transform: uppercase;
-  letter-spacing: .6px;
+  letter-spacing: .55px;
 }
 
 .anr-env-box .v{
-  font-size: 18px;
-  font-weight: 1100;
-  margin-top: 6px;
+  font-size: 15px;                   /* tightened */
+  font-weight: 950;                  /* tightened */
+  margin-top: 4px;                   /* tightened */
+  line-height: 1.1;
 }
 
+/* Only switch to stacked layout on truly small widths */
 @media (max-width: 420px){
   .anr-env-metrics{ grid-template-columns: 1fr; }
   .anr-years{ width: 100%; justify-content: space-between; }
