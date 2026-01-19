@@ -1,8 +1,8 @@
 /* =========================================
    ACTION NETWORK — RECORD ENV MODULE (Static)
-   ✅ 150px iframe target
-   ✅ Branded internal scroll (mobile-safe, only if needed)
-   ✅ Better touch scrolling + no “cut off” bottom on mobile
+   ✅ 200px iframe target
+   ✅ Branded internal scroll (only if needed)
+   ✅ Mobile-safe scrolling behavior + no cut-off bottom
    ========================================= */
 
 :root{
@@ -25,23 +25,23 @@ body{
   overflow: hidden; /* ✅ key: no iframe scroll */
 }
 
-/* Fixed-height viewport inside the iframe (set iframe height to 150) */
+/* Fixed-height viewport inside the iframe (set iframe height to 200) */
 .anr-frame{
-  height: 150px;
+  height: 200px;
   overflow: hidden;
 }
 
 /* Internal scroller: scrolls only if content overflows (mobile-safe) */
 .anr-scroll{
-  height: 150px;
-  overflow-y: auto;                 /* ✅ internal scroll only when needed */
+  height: 200px;
+  overflow-y: auto;                  /* ✅ only if needed */
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;/* ✅ iOS momentum scroll */
-  overscroll-behavior: contain;     /* ✅ stop parent page stealing scroll */
-  touch-action: pan-y;              /* ✅ allow vertical gestures */
-  padding: 0 0 8px;                 /* ✅ tiny bottom padding prevents “cut off” */
+  -webkit-overflow-scrolling: touch; /* ✅ iOS momentum */
+  overscroll-behavior: contain;      /* ✅ stop parent stealing scroll */
+  touch-action: pan-y;               /* ✅ allow vertical gestures */
+  padding: 0 0 10px;                 /* ✅ prevents “cut off” at bottom */
   position: relative;
-  transform: translateZ(0);         /* ✅ helps some mobile browsers */
+  transform: translateZ(0);          /* ✅ helps some mobile browsers */
 }
 
 /* Branded scrollbar for the internal scroller */
@@ -67,7 +67,7 @@ body{
   box-sizing: border-box;
 }
 
-/* Card (tightened to fit 150px better) */
+/* Card (tightened so it usually fits 200px without scroll) */
 .anr-env{
   background: var(--an-card);
   border: 1px solid var(--an-line);
@@ -91,7 +91,12 @@ body{
   justify-content:space-between;
   align-items:flex-start;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;   /* ✅ keeps desktop layout stable */
+}
+
+/* If the iframe gets narrow, allow wrapping */
+@media (max-width: 560px){
+  .anr-env-head{ flex-wrap: wrap; }
 }
 
 .anr-env h3{
