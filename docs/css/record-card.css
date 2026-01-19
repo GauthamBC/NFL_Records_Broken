@@ -2,7 +2,6 @@
    ACTION NETWORK — RECORD ENV MODULE (Static)
    ✅ 200px iframe target
    ✅ Branded internal scroll (only if needed)
-   ✅ Mobile-safe scrolling behavior + no cut-off bottom
    ========================================= */
 
 :root{
@@ -31,17 +30,13 @@ body{
   overflow: hidden;
 }
 
-/* Internal scroller: scrolls only if content overflows (mobile-safe) */
+/* Internal scroller: only scrolls if content overflows */
 .anr-scroll{
   height: 200px;
-  overflow-y: auto;                  /* ✅ only if needed */
+  overflow-y: auto;        /* ✅ scroll only when needed */
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch; /* ✅ iOS momentum */
-  overscroll-behavior: contain;      /* ✅ stop parent stealing scroll */
-  touch-action: pan-y;               /* ✅ allow vertical gestures */
-  padding: 0 0 10px;                 /* ✅ prevents “cut off” at bottom */
-  position: relative;
-  transform: translateZ(0);          /* ✅ helps some mobile browsers */
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
 }
 
 /* Branded scrollbar for the internal scroller */
@@ -67,12 +62,12 @@ body{
   box-sizing: border-box;
 }
 
-/* Card (tightened so it usually fits 200px without scroll) */
+/* Card (tightened to fit 200px better) */
 .anr-env{
   background: var(--an-card);
   border: 1px solid var(--an-line);
   border-radius: 14px;
-  padding: 10px 12px;
+  padding: 10px 12px;              /* tightened */
   box-shadow: 0 8px 20px rgba(0,0,0,.05);
   position: relative;
   overflow: hidden;
@@ -91,12 +86,7 @@ body{
   justify-content:space-between;
   align-items:flex-start;
   gap: 10px;
-  flex-wrap: nowrap;   /* ✅ keeps desktop layout stable */
-}
-
-/* If the iframe gets narrow, allow wrapping */
-@media (max-width: 560px){
-  .anr-env-head{ flex-wrap: wrap; }
+  flex-wrap: wrap;
 }
 
 .anr-env h3{
